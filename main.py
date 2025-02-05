@@ -91,7 +91,7 @@ def list_cards_by_game():
     for card in cards:
         if card.game == games[game]:
             print(card)
-    print("=" * 100 + "\n")
+    print("=" * 100)
 
 
 def list_cards_by_rarity():
@@ -102,12 +102,19 @@ def list_cards_by_rarity():
     print("\n" + "=" * 100)
     for card in cards:
         if card.rarity == rarities[rarity]:
+            print("\n" + "=" * 100)
             print(card)
-    print("=" * 100 + "\n")
+            print("=" * 100)
 
 
-def find_card_by_id(id):
-    print("Hey Marceline")
+def find_card_by_id():
+    
+    id = int(input("Digite o id da carta: "))
+    for card in cards:
+        if card.id == id:
+            print("\n" + "=" * 100)
+            print(card)
+            print("=" * 100 + "\n")
 
 
 def menu():
@@ -119,6 +126,7 @@ def menu():
         print("2 - Listar Cartas")
         print("3 - Listar Cartas por Jogo")
         print("4 - Listar Cartas por Raridade")
+        print("5 - Buscar Carta por id")
         print("0 - Sair")
         print("=" * 20 + "\n")
 
@@ -133,6 +141,8 @@ def menu():
                 list_cards_by_game()
             case 4:
                 list_cards_by_rarity()
+            case 5:
+                find_card_by_id()
             case _:
                 print("Opção inválida")
 
