@@ -21,23 +21,23 @@ games = {
 }
 
 rarities = {
-    1: "Common", 
-    2: "Rare", 
-    3: "Super Rare", 
-    4: "Ultra Rare"
+    1: "Comum", 
+    2: "Rara", 
+    3: "Super Rara", 
+    4: "Ultra Rara"
 }
 # fmt: on
 
 cards = [
-    Card(1, "Red-Eyes Black Dragon", games[1], rarities[4], 100.00, 10, 0),
-    Card(2, "Blue-Eyes White Dragon", games[1], rarities[4], 200.00, 5, 0),
-    Card(3, "Dark Magician", games[1], rarities[4], 150.00, 7, 0),
-    Card(4, "Garchomp", games[2], rarities[4], 100.00, 10, 0),
-    Card(5, "Tyranitar", games[2], rarities[4], 200.00, 5, 0),
-    Card(6, "Mewtwo", games[2], rarities[4], 500.00, 7, 0),
-    Card(7, "Greymon", games[3], rarities[4], 100.00, 10, 0),
-    Card(8, "MetalGreymon", games[3], rarities[4], 200.00, 5, 0),
-    Card(9, "WarGreymon", games[3], rarities[4], 300.00, 7, 0),
+    Card(1, games[1], "Red-Eyes Black Dragon", rarities[4], 100.00, 10, 0),
+    Card(2, games[1], "Blue-Eyes White Dragon", rarities[4], 200.00, 5, 0),
+    Card(3, games[1], "Dark Magician", rarities[4], 150.00, 7, 0),
+    Card(4, games[2], "Garchomp", rarities[4], 100.00, 10, 0),
+    Card(5, games[2], "Tyranitar", rarities[4], 200.00, 5, 0),
+    Card(6, games[2], "Mewtwo", rarities[4], 500.00, 7, 0),
+    Card(7, games[3], "Greymon", rarities[4], 100.00, 10, 0),
+    Card(8, games[3], "MetalGreymon", rarities[4], 200.00, 5, 0),
+    Card(9, games[3], "WarGreymon", rarities[4], 300.00, 7, 0),
 ]
 
 
@@ -68,7 +68,7 @@ def register_card():
     # Gerar um id para a carta
     card_id = len(cards) + 1
 
-    card = Card(id, name, games[game], rarities[rarity], price, stock)
+    card = Card(card_id, name, games[game], rarities[rarity], price, stock)
 
     cards.append(card)
 
@@ -94,8 +94,16 @@ def list_cards_by_game():
     print("=" * 100 + "\n")
 
 
-def list_cards_by_rarity(rarity):
-    print("Hey Marceline")
+def list_cards_by_rarity():
+
+    display_rarities()
+    rarity = int(input("Digite a raridade desejada: "))
+
+    print("\n" + "=" * 100)
+    for card in cards:
+        if card.rarity == rarities[rarity]:
+            print(card)
+    print("=" * 100 + "\n")
 
 
 def find_card_by_id(id):
@@ -124,7 +132,7 @@ def menu():
             case 3:
                 list_cards_by_game()
             case 4:
-                list_cards_by_rarity()    
+                list_cards_by_rarity()
             case _:
                 print("Opção inválida")
 
