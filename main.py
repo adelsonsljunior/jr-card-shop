@@ -29,6 +29,11 @@ cards = [
     Card(9, "WarGreymon", games[3], rarities[4], 300.00, 7, 0),
 ]
 
+def display_games():
+    print("\n" + "=" * 15)
+    for key, value in games.items():
+        print(f"{key} - {value}")
+    print("=" * 15 + "\n")
 
 def register_card():
 
@@ -50,9 +55,16 @@ def list_cards():
     print("=" * 100 + "\n")
 
 
-def list_cards_by_game(game):
+def list_cards_by_game():
+    
+    display_games()
+    game = int(input("Digite o jogo desejado: "))
 
-    print("Hey Marceline")
+    print("\n" + "=" * 100)
+    for card in cards:
+        if card.game == games[game]:
+            print(card)
+    print("=" * 100 + "\n")
 
 
 def list_cards_by_rarity(rarity):
@@ -67,10 +79,12 @@ def menu():
     opt = 0
 
     while opt != 6:
-
+        print("\n" + "=" * 20)
         print("1 - Cadastrar Carta")
         print("2 - Listar Cartas")
+        print("3 - Listar Cartas por Jogo")
         print("0 - Sair")
+        print("=" * 20 + "\n")
 
         opt = int(input("Digite a opção desejada: "))
 
@@ -79,6 +93,8 @@ def menu():
                 register_card()
             case 2:
                 list_cards()
+            case 3:
+                list_cards_by_game()
             case _:
                 print("Opção inválida")
 
