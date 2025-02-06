@@ -1,33 +1,6 @@
 import repository
 from card import Card
-
-# fmt: off
-games = {
-    1: "Yu-Gi-Oh", 
-    2: "Pokémon", 
-    3: "Digimon"
-}
-
-
-rarities = {
-    1: "Comum", 
-    2: "Rara", 
-    3: "Super Rara", 
-    4: "Ultra Rara"
-}
-# fmt: on
-
-cards = [
-    Card(1, games[1], "Red-Eyes Black Dragon", rarities[4], 100.00, 10, 0),
-    Card(2, games[1], "Blue-Eyes White Dragon", rarities[4], 200.00, 5, 0),
-    Card(3, games[1], "Dark Magician", rarities[4], 150.00, 7, 0),
-    Card(4, games[2], "Garchomp", rarities[4], 100.00, 10, 0),
-    Card(5, games[2], "Tyranitar", rarities[4], 200.00, 5, 0),
-    Card(6, games[2], "Mewtwo", rarities[4], 500.00, 7, 0),
-    Card(7, games[3], "Greymon", rarities[1], 20.00, 10, 0),
-    Card(8, games[3], "MetalGreymon", rarities[2], 40.00, 5, 0),
-    Card(9, games[3], "WarGreymon", rarities[3], 80.00, 7, 0),
-]
+from dictionaries import games, rarities
 
 
 def display_games():
@@ -139,9 +112,7 @@ def menu():
             break
 
 
-
-
 if __name__ == "__main__":
-    #menu()
+    # menu()
 
     repository.get_cards()
