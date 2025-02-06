@@ -1,0 +1,10 @@
+id,game,name,rarity,price,stock,sold
+1,Yu-Gi-Oh,Red-Eyes Black Dragon,Ultra Rara,100.0,10,0
+2,Yu-Gi-Oh,Blue-Eyes White Dragon,Ultra Rara,200.0,5,0
+3,Yu-Gi-Oh,Dark Magician,Ultra Rara,150.0,7,0
+4,Pokémon,Garchomp,Ultra Rara,100.0,10,0
+5,Pokémon,Tyranitar,Ultra Rara,200.0,5,0
+6,Pokémon,Mewtwo,Ultra Rara,500.0,7,0
+7,Digimon,Greymon,Comum,20.0,10,0
+8,Digimon,MetalGreymon,Rara,40.0,5,0
+9,Digimon,WarGreymon,Super Rara,80.0,7,0
