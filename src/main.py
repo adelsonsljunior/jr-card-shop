@@ -1,17 +1,5 @@
-class Card:
-
-    def __init__(self, id, game, name, rarity, price, stock, sold=0):  # sold é opcional
-        self.id = id
-        self.game = game
-        self.name = name
-        self.rarity = rarity
-        self.price = price
-        self.stock = stock
-        self.sold = sold  # Valor padrão é 0
-
-    def __str__(self):
-        return f"id: {self.id}, game: {self.game}, name: {self.name}, rarity: {self.rarity}, price: {self.price}, stock: {self.stock}, sold: {self.sold}"
-
+import repository
+from card import Card
 
 # fmt: off
 games = {
@@ -19,6 +7,7 @@ games = {
     2: "Pokémon", 
     3: "Digimon"
 }
+
 
 rarities = {
     1: "Comum", 
@@ -35,9 +24,9 @@ cards = [
     Card(4, games[2], "Garchomp", rarities[4], 100.00, 10, 0),
     Card(5, games[2], "Tyranitar", rarities[4], 200.00, 5, 0),
     Card(6, games[2], "Mewtwo", rarities[4], 500.00, 7, 0),
-    Card(7, games[3], "Greymon", rarities[4], 100.00, 10, 0),
-    Card(8, games[3], "MetalGreymon", rarities[4], 200.00, 5, 0),
-    Card(9, games[3], "WarGreymon", rarities[4], 300.00, 7, 0),
+    Card(7, games[3], "Greymon", rarities[1], 20.00, 10, 0),
+    Card(8, games[3], "MetalGreymon", rarities[2], 40.00, 5, 0),
+    Card(9, games[3], "WarGreymon", rarities[3], 80.00, 7, 0),
 ]
 
 
@@ -108,7 +97,7 @@ def list_cards_by_rarity():
 
 
 def find_card_by_id():
-    
+
     id = int(input("Digite o id da carta: "))
     for card in cards:
         if card.id == id:
@@ -150,5 +139,9 @@ def menu():
             break
 
 
+
+
 if __name__ == "__main__":
-    menu()
+    #menu()
+
+    repository.get_cards()
