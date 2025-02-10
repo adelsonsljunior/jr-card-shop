@@ -29,10 +29,10 @@ def register_card():
     price = float(input("Digite o preço da carta: "))
     stock = int(input("Digite a quantidade em estoque: "))
 
-    # Gerar um id para a carta
+    # Gera um id para a carta
     card_id = len(cards) + 1
 
-    card = Card(card_id, name, games[game], rarities[rarity], price, stock)
+    card = Card(card_id, games[game], name, rarities[rarity], price, stock)
 
     cards.append(card)
 
@@ -58,7 +58,7 @@ def list_cards_by_game():
 
     print("\n" + "=" * 100)
     for card in cards:
-        if card.game == games[game]:
+        if card.game.upper() == games[game].upper():
             print(card)
     print("=" * 100)
 
@@ -72,7 +72,7 @@ def list_cards_by_rarity():
 
     print("\n" + "=" * 100)
     for card in cards:
-        if card.rarity == rarities[rarity]:
+        if card.rarity.upper() == rarities[rarity].upper():
             print("\n" + "=" * 100)
             print(card)
             print("=" * 100)

@@ -30,5 +30,26 @@ def load_cards():
 
 
 def save_cards(cards):
+    try:
+        with open(filename, mode="w", newline="", encoding="utf-8") as file:
+            # Define o cabeçalho do CSV
+            fieldnames = ["id", "game", "name", "rarity", "price", "stock", "sold"]
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
 
-    print("Hey MArceline")
+            # Escreve o cabeçalho
+            writer.writeheader()
+
+            # Escreve cada carta no arquivo CSV
+            for card in cards:
+                writer.writerow({
+                    "id": card.id,
+                    "game": card.game,
+                    "name": card.name,
+                    "rarity": card.rarity,
+                    "price": card.price,
+                    "stock": card.stock,
+                    "sold": card.sold,
+                })
+        print("\n[INFO] - Cartas salvas no arquivo CSV com sucesso!")
+    except Exception as e:
+        print(f"\n[ERRO] - Ocorreu um erro ao salvar o arquivo CSV: {e}")
