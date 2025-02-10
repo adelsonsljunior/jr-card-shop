@@ -17,13 +17,27 @@ def display_rarities():
     print("=" * 15 + "\n")
 
 
+def format_card_name(name):
+
+    # Remove espaços extras no início e no final
+    name = name.strip()
+
+    # Converte para maiúsculas
+    name = name.upper()
+
+    # Substitui múltiplos espaços internos por um único espaço
+    name = " ".join(name.split())
+
+    return name
+
+
 def register_card():
 
     cards = repository.load_cards()
 
     display_games()
     game = int(input("Digite o jogo da carta: "))
-    name = input("Digite o name da carta: ")
+    name = format_card_name(input("Digite o name da carta: "))
     display_rarities()
     rarity = int(input("Digite a rarity da carta: "))
     price = float(input("Digite o preço da carta: "))
@@ -43,10 +57,10 @@ def list_cards():
 
     cards = repository.load_cards()
 
-    print("\n" + "=" * 100)
+    print("\n" + "=" * 40)
     for card in cards:
         print(card)
-    print("=" * 100 + "\n")
+    print("=" * 40 + "\n")
 
 
 def list_cards_by_game():
@@ -90,33 +104,94 @@ def find_card_by_id():
             print("=" * 100 + "\n")
 
 
-def sell_cards():
-    print("Hey Marceline")
+def sell_card():
+
+    cards = repository.load_cards()
+
+    id = int(input("Digite o id da carta: "))
+    quantity = int(input("Digite a quantidade a ser vendida: "))
+
+    for card in cards:
+        if card.id == id:
+            if card.stock >= quantity:
+                card.stock -= quantity
+                card.sold += quantity
+            else:
+                print("\n[ERRO] - Estoque insuficiente")
+                return
+
+    repository.save_cards(cards)
 
 
 def stock_replacement():
-    print("Hey Marceline")
+
+    cards = repository.load_cards()
+
+    id = int(input("Digite o id da carta: "))
+    quantity = int(input("Digite a quantidade a ser reposta: "))
+
+    for card in cards:
+        if card.id == id:
+            card.stock += quantity
+
+    repository.save_cards(cards)
 
 
 def sales_report():
-    print("Hey Marceline")
+
+    cards = repository.load_cards()
+
+    sold_cards = []
+
+    for card in cards:
+        if card.sold != 0:
+            sold_cards.append(card)
+
+    total_sales = 0  # Soma total das vendas
+    total_revenue = 0  # Receita total
+
+    print("\n" + "=" * 50)
+    print("RELATÓRIO DE VENDAS".center(50))
+    print("=" * 50)
+
+    for card in sold_cards:
+
+        card_sales = card.sold  # Quantidade de cartas vendidas
+        card_revenue = card.sold * card.price  # Receita gerada pela venda
+
+        total_sales += card_sales
+        total_revenue += card_revenue
+
+        print(f"\nCarta: {card.name}")
+        print(f"Jogo: {card.game}")
+        print(f"Raridade: {card.rarity}")
+        print(f"Preço Unitário: R$ {card.price:.2f}")
+        print(f"Unidades Vendidas: {card_sales}")
+        print(f"Receita Gerada: R$ {card_revenue:.2f}")
+        print("-" * 50)
+
+    print("\n" + "=" * 50)
+    print("RESUMO GERAL".center(50))
+    print("=" * 50)
+    print(f"\nTotal de Unidades Vendidas: {total_sales}")
+    print(f"Receita Total: R$ {total_revenue:.2f}")
+    print("=" * 50 + "\n")
 
 
 def menu():
-    opt = 0
 
-    while opt != 6:
-        print("\n" + "=" * 20)
+    while True:
+        print("\n" + "=" * 30)
         print("1 - Cadastrar Carta")
         print("2 - Listar Cartas")
         print("3 - Listar Cartas por Jogo")
         print("4 - Listar Cartas por Raridade")
         print("5 - Buscar Carta por id")
-        print("6 - Vender Cartas")
+        print("6 - Vender Carta")
         print("7 - Reposição de Estoque")
         print("8 - Relatório de Vendas")
         print("9 - Sair")
-        print("=" * 20 + "\n")
+        print("=" * 40 + "\n")
 
         opt = int(input("Digite a opção desejada: "))
 
@@ -131,11 +206,17 @@ def menu():
                 list_cards_by_rarity()
             case 5:
                 find_card_by_id()
+            case 6:
+                sell_card()
+            case 7:
+                stock_replacement()
+            case 8:
+                sales_report()
             case 9:
-                print("Saindo...")
+                print("\nSaindo...")
                 break
             case _:
-                print("Opção inválida")
+                print("\nOpção inválida")
 
 
 if __name__ == "__main__":

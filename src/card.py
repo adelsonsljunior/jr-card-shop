@@ -10,5 +10,12 @@ class Card:
         self.sold = sold  # Valor padrão é 0
 
     def __str__(self):
-        return f"id: {self.id}, game: {self.game}, name: {self.name}, rarity: {self.rarity}, price: {self.price}, stock: {self.stock}, sold: {self.sold}"
-
+        return (
+            f"ID: {self.id}\n"
+            f"Jogo: {self.game}\n"
+            f"Carta: {self.name}\n"
+            f"Raridade: {self.rarity}\n"
+            f"Preço Unitário: R$ {self.price:.2f}\n"
+            f"Unidades em Estoque: {self.stock}\n"
+            f"Unidades Vendidas: {self.sold}\n"
+        )

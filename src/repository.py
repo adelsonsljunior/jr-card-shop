@@ -41,15 +41,17 @@ def save_cards(cards):
 
             # Escreve cada carta no arquivo CSV
             for card in cards:
-                writer.writerow({
-                    "id": card.id,
-                    "game": card.game,
-                    "name": card.name,
-                    "rarity": card.rarity,
-                    "price": card.price,
-                    "stock": card.stock,
-                    "sold": card.sold,
-                })
+                writer.writerow(
+                    {
+                        "id": card.id,
+                        "game": card.game,
+                        "name": card.name,
+                        "rarity": card.rarity,
+                        "price": card.price,
+                        "stock": card.stock,
+                        "sold": card.sold,
+                    }
+                )
         print("\n[INFO] - Cartas salvas no arquivo CSV com sucesso!")
     except Exception as e:
         print(f"\n[ERRO] - Ocorreu um erro ao salvar o arquivo CSV: {e}")
