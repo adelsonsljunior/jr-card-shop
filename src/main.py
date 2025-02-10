@@ -19,6 +19,8 @@ def display_rarities():
 
 def register_card():
 
+    cards = repository.load_cards()
+
     display_games()
     game = int(input("Digite o jogo da carta: "))
     name = input("Digite o name da carta: ")
@@ -34,10 +36,13 @@ def register_card():
 
     cards.append(card)
 
-    print("\n[INFO] - Carta cadastrada com sucesso")
+    repository.save_cards(cards)
 
 
 def list_cards():
+
+    cards = repository.load_cards()
+
     print("\n" + "=" * 100)
     for card in cards:
         print(card)
@@ -45,6 +50,8 @@ def list_cards():
 
 
 def list_cards_by_game():
+
+    cards = repository.load_cards()
 
     display_games()
     game = int(input("Digite o jogo desejado: "))
@@ -58,6 +65,8 @@ def list_cards_by_game():
 
 def list_cards_by_rarity():
 
+    cards = repository.load_cards()
+
     display_rarities()
     rarity = int(input("Digite a raridade desejada: "))
 
@@ -70,6 +79,8 @@ def list_cards_by_rarity():
 
 
 def find_card_by_id():
+
+    cards = repository.load_cards()
 
     id = int(input("Digite o id da carta: "))
     for card in cards:

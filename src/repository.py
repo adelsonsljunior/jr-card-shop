@@ -1,11 +1,12 @@
 import csv
 from card import Card
 
-filename = "csvs/cards.csv"
+filename = "data/cards.csv"
 
-cards = []
 
-def get_cards():
+def load_cards():
+
+    cards = []
 
     try:
         with open(filename, mode="r", newline="", encoding="utf-8") as file:
@@ -28,6 +29,6 @@ def get_cards():
     return cards
 
 
-def create_card(card):
+def save_cards(cards):
 
-    print("Marceline")
+    print("Hey MArceline")
