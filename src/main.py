@@ -79,6 +79,18 @@ def find_card_by_id():
             print("=" * 100 + "\n")
 
 
+def sell_cards():
+    print("Hey Marceline")
+
+
+def stock_replacement():
+    print("Hey Marceline")
+
+
+def sales_report():
+    print("Hey Marceline")
+
+
 def menu():
     opt = 0
 
@@ -89,7 +101,10 @@ def menu():
         print("3 - Listar Cartas por Jogo")
         print("4 - Listar Cartas por Raridade")
         print("5 - Buscar Carta por id")
-        print("0 - Sair")
+        print("6 - Vender Cartas")
+        print("7 - Reposição de Estoque")
+        print("8 - Relatório de Vendas")
+        print("9 - Sair")
         print("=" * 20 + "\n")
 
         opt = int(input("Digite a opção desejada: "))
@@ -105,14 +120,12 @@ def menu():
                 list_cards_by_rarity()
             case 5:
                 find_card_by_id()
+            case 9:
+                print("Saindo...")
+                break
             case _:
                 print("Opção inválida")
 
-        if opt == 0:
-            break
-
 
 if __name__ == "__main__":
-    # menu()
-
-    repository.get_cards()
+    menu()
