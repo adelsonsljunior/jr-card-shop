@@ -5,16 +5,20 @@ from dictionaries import games, rarities
 
 def display_games():
     print("\n" + "=" * 15)
+    print("JOGOS".center(15))
+    print("" + "=" * 15)
     for key, value in games.items():
         print(f"{key} - {value}")
-    print("=" * 15 + "\n")
+    print("=" * 15)
 
 
 def display_rarities():
-    print("\n" + "=" * 15)
+    print("=" * 15)
+    print("RARIDADES".center(15))
+    print("=" * 15)
     for key, value in rarities.items():
         print(f"{key} - {value}")
-    print("=" * 15 + "\n")
+    print("=" * 15)
 
 
 def format_card_name(name):
@@ -70,11 +74,11 @@ def list_cards_by_game():
     display_games()
     game = int(input("Digite o jogo desejado: "))
 
-    print("\n" + "=" * 100)
+    print("\n" + "=" * 40)
     for card in cards:
         if card.game.upper() == games[game].upper():
             print(card)
-    print("=" * 100)
+    print("=" * 40)
 
 
 def list_cards_by_rarity():
@@ -84,12 +88,11 @@ def list_cards_by_rarity():
     display_rarities()
     rarity = int(input("Digite a raridade desejada: "))
 
-    print("\n" + "=" * 100)
+    print("\n" + "=" * 40)
     for card in cards:
         if card.rarity.upper() == rarities[rarity].upper():
-            print("\n" + "=" * 100)
             print(card)
-            print("=" * 100)
+    print("=" * 40)
 
 
 def find_card_by_id():
@@ -99,9 +102,9 @@ def find_card_by_id():
     id = int(input("Digite o id da carta: "))
     for card in cards:
         if card.id == id:
-            print("\n" + "=" * 100)
+            print("\n" + "=" * 40)
             print(card)
-            print("=" * 100 + "\n")
+            print("=" * 40 + "\n")
 
 
 def sell_card():
@@ -181,7 +184,9 @@ def sales_report():
 def menu():
 
     while True:
-        print("\n" + "=" * 30)
+        print("\n" + "=" * 40)
+        print("MENU".center(40))
+        print("=" * 40)
         print("1 - Cadastrar Carta")
         print("2 - Listar Cartas")
         print("3 - Listar Cartas por Jogo")
